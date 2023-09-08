@@ -1,0 +1,4 @@
+.github/
+.pre-commit-config.yaml
+.env
+venv/
