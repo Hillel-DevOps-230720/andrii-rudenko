@@ -14,8 +14,6 @@
 
     git checkout -b hw-7
     tee .gitignore >/dev/null <<EOF
-    .github/
-    .pre-commit-config.yaml
     .env
     venv/
     EOF
