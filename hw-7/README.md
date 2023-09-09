@@ -56,10 +56,10 @@
     name: 'Auto Assign'
     on: pull_request
     jobs:
-    add-reviews:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: kentaro-m/auto-assign-action@v1.1.2
+      add-reviews:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: kentaro-m/auto-assign-action@v1.1.2
     EOF
 
     mkdir ./hw-7 && touch ./hw-7/README.md
