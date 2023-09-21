@@ -244,7 +244,21 @@ IpPermissions:
   PrefixListIds:
   - PrefixListId: $AWSCLI_ID_PL_TRUSTED
   ToPort: $AWSCLI_HTTP_PORT
+```
 
+</details>
+
+<details>
+  <summary>sgr-proxy-sg-db-all.yaml</summary>
+
+```yaml
+GroupId: $AWSCLI_ID_SG_PROXY
+IpPermissions:
+- FromPort: -1
+  IpProtocol: "-1"
+  ToPort: -1
+  UserIdGroupPairs:
+  - GroupId: $AWSCLI_ID_SG_DB
 ```
 
 </details>
