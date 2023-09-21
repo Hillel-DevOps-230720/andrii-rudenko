@@ -6,7 +6,6 @@
 sudo apt install -y jq
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
 unzip /tmp/awscliv2.zip -d /tmp/ && sudo /tmp/aws/install
-git checkout main && git pull & git checkout -b hw-8
 mkdir ./awscli && touch ./awscli/README.md && touch ./awscli/.log
 ```
 
