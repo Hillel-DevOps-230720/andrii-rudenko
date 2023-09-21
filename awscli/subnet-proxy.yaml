@@ -1,0 +1,7 @@
+VpcId: $AWSCLI_ID_VPC_MAIN
+CidrBlock: $AWSCLI_CIDR_SUBNET_PROXY
+TagSpecifications:
+- ResourceType: subnet
+  Tags:
+  - Key: 'Name'
+    Value: $AWSCLI_NAME_PROXY

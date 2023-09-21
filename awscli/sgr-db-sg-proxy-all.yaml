@@ -1,0 +1,7 @@
+GroupId: $AWSCLI_ID_SG_DB
+IpPermissions:
+- FromPort: -1
+  IpProtocol: "-1"
+  ToPort: -1
+  UserIdGroupPairs:
+  - GroupId: $AWSCLI_ID_SG_PROXY

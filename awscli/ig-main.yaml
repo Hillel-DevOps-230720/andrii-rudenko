@@ -1,0 +1,5 @@
+TagSpecifications:
+- ResourceType: internet-gateway
+  Tags:
+  - Key: 'Name'
+    Value: $AWSCLI_NAME_MAIN
