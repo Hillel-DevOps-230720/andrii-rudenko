@@ -1,0 +1,22 @@
+ImageId: $AWSCLI_ID_AMI_PROXY
+InstanceType: t2.micro
+KeyName: $AWSCLI_NAME_KEY
+MaxCount: 1
+MinCount: 1
+SecurityGroupIds:
+- $AWSCLI_ID_SG_PROXY
+SubnetId: $AWSCLI_ID_SUBNET_PROXY
+IamInstanceProfile:
+  Name: $AWSCLI_NAME_IAM_PROFILE
+TagSpecifications:
+- ResourceType: instance
+  Tags:
+  - Key: 'Name'
+    Value: $AWSCLI_NAME_PROXY
+- ResourceType: volume
+  Tags:
+  - Key: 'Name'
+    Value: $AWSCLI_NAME_PROXY
+PrivateDnsNameOptions:
+  HostnameType: ip-name
+  EnableResourceNameDnsARecord: true

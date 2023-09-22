@@ -1,0 +1,6 @@
+CidrBlock: $AWSCLI_CIDR_VPC_MAIN
+TagSpecifications:
+- ResourceType: vpc
+  Tags:
+  - Key: 'Name'
+    Value: $AWSCLI_NAME_MAIN

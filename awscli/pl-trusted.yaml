@@ -1,0 +1,6 @@
+PrefixListName: $AWSCLI_NAME_TRUSTED
+Entries:
+- Cidr: $AWS_TRUSTED_HOST1
+- Cidr: $AWS_TRUSTED_HOST2
+MaxEntries: 5
+AddressFamily: IPv4

@@ -1,0 +1,505 @@
+{
+    "InternetGateway": {
+        "Attachments": [],
+        "InternetGatewayId": "igw-04ed25f1800f8d2a0",
+        "OwnerId": "972244147361",
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "awscli-main"
+            }
+        ]
+    }
+}
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "192.168.0.0/16",
+            "DhcpOptionsId": "dopt-06701c18343549db2",
+            "State": "available",
+            "VpcId": "vpc-0f1d82e0bcda7ab8a",
+            "OwnerId": "972244147361",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0420420cf1c1f6417",
+                    "CidrBlock": "192.168.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "awscli-main"
+                }
+            ]
+        }
+    ]
+}
+{
+    "RouteTables": [
+        {
+            "Associations": [
+                {
+                    "Main": true,
+                    "RouteTableAssociationId": "rtbassoc-049126c152504f38c",
+                    "RouteTableId": "rtb-05158bc7d045a3ee3",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-05158bc7d045a3ee3",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "192.168.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "GatewayId": "igw-04ed25f1800f8d2a0",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "awscli-main"
+                }
+            ],
+            "VpcId": "vpc-0f1d82e0bcda7ab8a",
+            "OwnerId": "972244147361"
+        }
+    ]
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-central-1b",
+        "AvailabilityZoneId": "euc1-az3",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "192.168.1.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-0611b077412261171",
+        "VpcId": "vpc-0f1d82e0bcda7ab8a",
+        "OwnerId": "972244147361",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "awscli-proxy"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:eu-central-1:972244147361:subnet/subnet-0611b077412261171",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "Subnet": {
+        "AvailabilityZone": "eu-central-1b",
+        "AvailabilityZoneId": "euc1-az3",
+        "AvailableIpAddressCount": 251,
+        "CidrBlock": "192.168.2.0/24",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false,
+        "State": "available",
+        "SubnetId": "subnet-0557a0772d6c1c567",
+        "VpcId": "vpc-0f1d82e0bcda7ab8a",
+        "OwnerId": "972244147361",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "awscli-db"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:eu-central-1:972244147361:subnet/subnet-0557a0772d6c1c567",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        }
+    }
+}
+{
+    "PrefixList": {
+        "PrefixListId": "pl-0b57f020dd726277e",
+        "AddressFamily": "IPv4",
+        "State": "create-in-progress",
+        "PrefixListArn": "arn:aws:ec2:eu-central-1:972244147361:prefix-list/pl-0b57f020dd726277e",
+        "PrefixListName": "awscli-trusted",
+        "MaxEntries": 5,
+        "Version": 1,
+        "Tags": [],
+        "OwnerId": "972244147361"
+    }
+}
+{
+    "GroupId": "sg-0e19babe97c2e0a9f"
+}
+{
+    "GroupId": "sg-0f25ddb1e6a924936"
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-07c5097b0bd52ec42",
+            "GroupId": "sg-0e19babe97c2e0a9f",
+            "GroupOwnerId": "972244147361",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 22,
+            "PrefixListId": "pl-0b57f020dd726277e"
+        }
+    ]
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0bf74e464f648a9be",
+            "GroupId": "sg-0e19babe97c2e0a9f",
+            "GroupOwnerId": "972244147361",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 8000,
+            "ToPort": 8000,
+            "PrefixListId": "pl-0b57f020dd726277e"
+        }
+    ]
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0b9e0c17af4da7e9b",
+            "GroupId": "sg-0e19babe97c2e0a9f",
+            "GroupOwnerId": "972244147361",
+            "IsEgress": false,
+            "IpProtocol": "-1",
+            "FromPort": -1,
+            "ToPort": -1,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-0f25ddb1e6a924936",
+                "UserId": "972244147361"
+            }
+        }
+    ]
+}
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0fdb523556d7d0d4c",
+            "GroupId": "sg-0f25ddb1e6a924936",
+            "GroupOwnerId": "972244147361",
+            "IsEgress": false,
+            "IpProtocol": "-1",
+            "FromPort": -1,
+            "ToPort": -1,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-0e19babe97c2e0a9f",
+                "UserId": "972244147361"
+            }
+        }
+    ]
+}
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "awscli-main",
+        "RoleId": "AROA6EXSELSQVKNZMYFJB",
+        "Arn": "arn:aws:iam::972244147361:role/awscli-main",
+        "CreateDate": "2023-09-20T06:34:27+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {}
+    }
+}
+{
+    "Groups": [],
+    "Instances": [
+        {
+            "AmiLaunchIndex": 0,
+            "ImageId": "ami-0e8851af9b98bb0f5",
+            "InstanceId": "i-005ddcfbd41de8e87",
+            "InstanceType": "t2.micro",
+            "KeyName": "awscli-key",
+            "LaunchTime": "2023-09-21T16:20:19+00:00",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "Placement": {
+                "AvailabilityZone": "eu-central-1b",
+                "GroupName": "",
+                "Tenancy": "default"
+            },
+            "PrivateDnsName": "ip-192-168-1-78.eu-central-1.compute.internal",
+            "PrivateIpAddress": "192.168.1.78",
+            "ProductCodes": [],
+            "PublicDnsName": "",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "StateTransitionReason": "",
+            "SubnetId": "subnet-0611b077412261171",
+            "VpcId": "vpc-0f1d82e0bcda7ab8a",
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "95e3baad-62bf-41db-a36b-6c7f39e695ae",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::972244147361:instance-profile/awscli-full-access",
+                "Id": "AIPA6EXSELSQQW2HP4GLW"
+            },
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2023-09-21T16:20:19+00:00",
+                        "AttachmentId": "eni-attach-09580736fed25dff7",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupName": "awscli-proxy",
+                            "GroupId": "sg-0e19babe97c2e0a9f"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "06:37:3c:ec:6b:73",
+                    "NetworkInterfaceId": "eni-0b0f6ad31c0342ad1",
+                    "OwnerId": "972244147361",
+                    "PrivateDnsName": "ip-192-168-1-78.eu-central-1.compute.internal",
+                    "PrivateIpAddress": "192.168.1.78",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-192-168-1-78.eu-central-1.compute.internal",
+                            "PrivateIpAddress": "192.168.1.78"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0611b077412261171",
+                    "VpcId": "vpc-0f1d82e0bcda7ab8a",
+                    "InterfaceType": "interface"
+                }
+            ],
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupName": "awscli-proxy",
+                    "GroupId": "sg-0e19babe97c2e0a9f"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "awscli-proxy"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 1,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "optional",
+                "HttpPutResponseHopLimit": 1,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": true,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "legacy-bios"
+        }
+    ],
+    "OwnerId": "972244147361",
+    "ReservationId": "r-0ac44188255f88e1a"
+}
+{
+    "Groups": [],
+    "Instances": [
+        {
+            "AmiLaunchIndex": 0,
+            "ImageId": "ami-0e8851af9b98bb0f5",
+            "InstanceId": "i-0f2c0abe3098fcce1",
+            "InstanceType": "t2.micro",
+            "KeyName": "awscli-key",
+            "LaunchTime": "2023-09-21T16:39:28+00:00",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "Placement": {
+                "AvailabilityZone": "eu-central-1b",
+                "GroupName": "",
+                "Tenancy": "default"
+            },
+            "PrivateDnsName": "ip-192-168-2-163.eu-central-1.compute.internal",
+            "PrivateIpAddress": "192.168.2.163",
+            "ProductCodes": [],
+            "PublicDnsName": "",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "StateTransitionReason": "",
+            "SubnetId": "subnet-0557a0772d6c1c567",
+            "VpcId": "vpc-0f1d82e0bcda7ab8a",
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "79e3bd62-e5b0-44cb-be59-bcf766bdf9a8",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::972244147361:instance-profile/awscli-full-access",
+                "Id": "AIPA6EXSELSQQW2HP4GLW"
+            },
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2023-09-21T16:39:28+00:00",
+                        "AttachmentId": "eni-attach-08cfab68606d7d0f0",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupName": "awscli-db",
+                            "GroupId": "sg-0f25ddb1e6a924936"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "06:c0:b3:30:84:af",
+                    "NetworkInterfaceId": "eni-07aad8810b454652d",
+                    "OwnerId": "972244147361",
+                    "PrivateDnsName": "ip-192-168-2-163.eu-central-1.compute.internal",
+                    "PrivateIpAddress": "192.168.2.163",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-192-168-2-163.eu-central-1.compute.internal",
+                            "PrivateIpAddress": "192.168.2.163"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0557a0772d6c1c567",
+                    "VpcId": "vpc-0f1d82e0bcda7ab8a",
+                    "InterfaceType": "interface"
+                }
+            ],
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupName": "awscli-db",
+                    "GroupId": "sg-0f25ddb1e6a924936"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "awscli-db"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 1,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "optional",
+                "HttpPutResponseHopLimit": 1,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": true,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "legacy-bios"
+        }
+    ],
+    "OwnerId": "972244147361",
+    "ReservationId": "r-091abd48026cf965f"
+}

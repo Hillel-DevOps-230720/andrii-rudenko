@@ -1,0 +1,7 @@
+GroupId: $AWSCLI_ID_SG_PROXY
+IpPermissions:
+- FromPort: $AWSCLI_HTTP_PORT
+  IpProtocol: tcp
+  PrefixListIds:
+  - PrefixListId: $AWSCLI_ID_PL_TRUSTED
+  ToPort: $AWSCLI_HTTP_PORT
