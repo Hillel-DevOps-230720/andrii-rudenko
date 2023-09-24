@@ -251,7 +251,7 @@ Description=Backup SQL dump to AWS S3 timer
 Requires=backupSQLtoS3.service
 
 [Timer]
-Unit=Backup SQL dump to AWS S3.service
+Unit=backupSQLtoS3.service
 OnCalendar=*-*-* 1:00:00
 #OnCalendar=*-*-* *:0/5
 
