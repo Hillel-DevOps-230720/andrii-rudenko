@@ -21,7 +21,6 @@ done
 EOF
 
 sudo chmod +x /home/ubuntu/backupSQLtoS3.sh
-. /home/ubuntu/backupSQLtoS3.sh
 
 sudo tee /etc/systemd/system/backupSQLtoS3.service >/dev/null <<EOF
 [Unit]

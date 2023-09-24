@@ -1,4 +1,8 @@
+# Decrease the size of EBS root volume t2.micro
+
+```bash
 lsblk
+
 NAME     MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0      7:0    0  24.4M  1 loop /snap/amazon-ssm-agent/6312
 loop1      7:1    0  55.6M  1 loop /snap/core18/2745
@@ -57,6 +61,7 @@ Number  Start (sector)    End (sector)  Size       Code  Name
   15           10240          227327   106.0 MiB   EF00
 
 sudo e2fsck -f /dev/xvdf1
+
 sudo resize2fs -M -p /dev/xvdf1
 resize2fs 1.46.5 (30-Dec-2021)
 Resizing the filesystem on /dev/xvdf1 to 712322 (4k) blocks.
@@ -73,6 +78,7 @@ The filesystem on /dev/xvdf1 is now 712322 (4k) blocks long.
 sudo dd bs=16M if=/dev/xvdf1 of=/dev/xvdg1 count=180
 
 sudo resize2fs -M -p /dev/xvdg1
+
 sudo e2fsck -f /dev/xvdg1
 
 sudo gdisk /dev/xvdf
@@ -87,6 +93,7 @@ Attribute flags: 0000000000000000
 Partition name: ''
 
 sudo gdisk /dev/xvdg
+
 Command (? for help): x
 Command (? for help): x
 Command (? for help): c
@@ -94,6 +101,7 @@ Command (? for help): c
 Command (? for help): w
 
 sudo gdisk /dev/xvdg
+
 Command (? for help): i
 Partition number (1-15): 1
 Partition GUID code: 0FC63DAF-8483-4772-8E79-3D69D8477DE4 (Linux filesystem)
@@ -104,7 +112,10 @@ Partition size: 8161247 sectors (3.9 GiB)
 Attribute flags: 0000000000000000
 Partition name: 'Linux filesystem'
 
+Ubuntu 22 Gold root volume
+
 lsblk
+
 NAME     MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0      7:0    0  24.4M  1 loop /snap/amazon-ssm-agent/6312
 loop1      7:1    0  55.6M  1 loop /snap/core18/2745
@@ -117,6 +128,7 @@ xvda     202:0    0     4G  0 disk
 └─xvda15 202:15   0   106M  0 part /boot/efi
 
 df -h
+
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/root       3.7G  1.6G  2.2G  43% /
 tmpfs           483M     0  483M   0% /dev/shm
@@ -124,3 +136,4 @@ tmpfs           194M  820K  193M   1% /run
 tmpfs           5.0M     0  5.0M   0% /run/lock
 /dev/xvda15     105M  6.1M   99M   6% /boot/efi
 tmpfs            97M  4.0K   97M   1% /run/user/1000
+```
