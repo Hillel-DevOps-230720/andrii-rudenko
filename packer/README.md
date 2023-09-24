@@ -1,5 +1,5 @@
 
-# Flask Applications with Gunicorn and Nginx
+# Flask Application with Gunicorn and Nginx
 
 ## Prepare environment
 
@@ -112,7 +112,7 @@ build {
 
 </details>
 
-## AMI Initialization Scripts
+## AMI Initialization Script
 
 Несколько моментов. Мы создали изолированное окружение для приложения flask. Поэтому сервису gunicorn, кроме переменных окружения, нужно передать и переменную `PATH=/home/ubuntu/app/venv/bin`. Также нужно проверить секцию provisioner - shell script. Она должна выглядить так: `execute_command = "{{ .Path }}"`. Если там будет `sudo`, то ВСЕ команды при инициализации образа, в том числе и создание рабочей папки приложения, будут выполняться от root. В итоге сервис gunicorn не сможет взамодействовать с приложением. Ну и поставим `sudo chmod 755 /home/ubuntu` для nginx, чтобы не получить Bad Gateway.
 
