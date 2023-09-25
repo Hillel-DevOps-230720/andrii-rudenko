@@ -1,0 +1,32 @@
+{
+  "builds": [
+    {
+      "name": "flask",
+      "builder_type": "amazon-ebs",
+      "build_time": 1695551947,
+      "files": null,
+      "artifact_id": "eu-central-1:ami-08ce033b60d883514",
+      "packer_run_uuid": "11d5080c-6a6c-298a-3757-24e7311f7533",
+      "custom_data": null
+    },
+    {
+      "name": "flask",
+      "builder_type": "amazon-ebs",
+      "build_time": 1695572597,
+      "files": null,
+      "artifact_id": "eu-central-1:ami-0c285539d8e68bdb6",
+      "packer_run_uuid": "7728fe8c-62c4-bf3d-f8ff-3f92be694014",
+      "custom_data": null
+    },
+    {
+      "name": "flask",
+      "builder_type": "amazon-ebs",
+      "build_time": 1695575098,
+      "files": null,
+      "artifact_id": "eu-central-1:ami-00606f9f6322fb02d",
+      "packer_run_uuid": "3c9fb3d2-e51a-60a8-8065-5d7282eeec7b",
+      "custom_data": null
+    }
+  ],
+  "last_run_uuid": "3c9fb3d2-e51a-60a8-8065-5d7282eeec7b"
+}
