@@ -2,4 +2,11 @@
 *.key
 *.log
 venv/
-*.temp
+
+# Terraform
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+.terraform/

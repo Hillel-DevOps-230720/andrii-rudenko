@@ -1,32 +1,50 @@
 {
   "builds": [
     {
-      "name": "flask",
+      "name": "template",
       "builder_type": "amazon-ebs",
-      "build_time": 1695551947,
+      "build_time": 1696746993,
       "files": null,
-      "artifact_id": "eu-central-1:ami-08ce033b60d883514",
-      "packer_run_uuid": "11d5080c-6a6c-298a-3757-24e7311f7533",
+      "artifact_id": "eu-central-1:ami-071e51f3496036431",
+      "packer_run_uuid": "fef34a64-efcc-5ef0-6553-0a79704e5145",
       "custom_data": null
     },
     {
-      "name": "flask",
+      "name": "template",
       "builder_type": "amazon-ebs",
-      "build_time": 1695572597,
+      "build_time": 1696747365,
       "files": null,
-      "artifact_id": "eu-central-1:ami-0c285539d8e68bdb6",
-      "packer_run_uuid": "7728fe8c-62c4-bf3d-f8ff-3f92be694014",
+      "artifact_id": "eu-central-1:ami-05cbb3cb5ae61c22d",
+      "packer_run_uuid": "bd0fcd1c-76a3-be69-45c4-0211ab851414",
       "custom_data": null
     },
     {
-      "name": "flask",
+      "name": "template",
       "builder_type": "amazon-ebs",
-      "build_time": 1695575098,
+      "build_time": 1696749167,
       "files": null,
-      "artifact_id": "eu-central-1:ami-00606f9f6322fb02d",
-      "packer_run_uuid": "3c9fb3d2-e51a-60a8-8065-5d7282eeec7b",
+      "artifact_id": "eu-central-1:ami-0ba7e31abe39b249b",
+      "packer_run_uuid": "effd4662-0439-0d28-e6ba-0fa8ef97e3f0",
+      "custom_data": null
+    },
+    {
+      "name": "template",
+      "builder_type": "amazon-ebs",
+      "build_time": 1696752435,
+      "files": null,
+      "artifact_id": "eu-central-1:ami-07ee8e47a2d697e07",
+      "packer_run_uuid": "cabbc19b-9153-b24c-5975-1f1ee6168ee6",
+      "custom_data": null
+    },
+    {
+      "name": "template",
+      "builder_type": "amazon-ebs",
+      "build_time": 1696752774,
+      "files": null,
+      "artifact_id": "eu-central-1:ami-02ddb73fd3376b1d1",
+      "packer_run_uuid": "6f100755-e4c5-ab89-28af-5b35386caec4",
       "custom_data": null
     }
   ],
-  "last_run_uuid": "3c9fb3d2-e51a-60a8-8065-5d7282eeec7b"
+  "last_run_uuid": "6f100755-e4c5-ab89-28af-5b35386caec4"
 }
