@@ -1,0 +1,11 @@
+[Unit]
+Description=SQL dump to AWS S3
+Requires=backup.service
+
+[Timer]
+Unit=backup.service
+OnCalendar=*-*-* 1:00:00
+# OnCalendar=*-*-* *:0/5
+
+[Install]
+WantedBy=timers.target

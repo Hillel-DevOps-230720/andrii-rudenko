@@ -1,0 +1,13 @@
+[Unit]
+Description= Update parameters from metadata
+Before=app.service
+
+[Service]
+User=ubuntu
+Group=www-data
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/ubuntu/update.sh
+
+[Install]
+WantedBy=multi-user.target

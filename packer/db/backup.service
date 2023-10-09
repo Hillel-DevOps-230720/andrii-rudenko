@@ -1,0 +1,10 @@
+[Unit]
+Description=SQL dump to AWS S3
+
+[Service]
+User=ubuntu
+Group=www-data
+ExecStart=/bin/bash /home/ubuntu/backup.sh
+
+[Install]
+WantedBy=multi-user.target
