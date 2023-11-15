@@ -1,0 +1,121 @@
+# Injected environment variables:
+# MYSQL_DB
+# MYSQL_USER
+# MYSQL_PASSWORD
+# MYSQL_HOST
+# SECRET_KEY
+# APP_PORT
+# APP_URL
+
+# Injected source files:
+# .environment -> /home/ubuntu/.environment
+# app.service -> /etc/systemd/system/app.service
+# app.conf -> /etc/nginx/sites-available/app.conf
+# update.sh -> /home/ubuntu/update.sh
+# update.service -> /etc/systemd/system/update.service
+
+---
+- name: Prepare app AMI
+  hosts: all
+  become: true
+
+  vars:
+    packages:
+      - nginx
+      - python3-pip
+      - python3.10-venv
+      - default-libmysqlclient-dev
+      - build-essential
+      - pkg-config
+
+  environment:
+    MYSQL_DB: "{{ db_name }}"
+    MYSQL_USER: "{{ db_user }}"
+    MYSQL_PASSWORD: "{{ db_password }}"
+    MYSQL_HOST: "{{ db_ip_local }}"
+    SECRET_KEY: "{{ app_key }}"
+    APP_PORT: "{{ app_port }}"
+    APP_URL: "{{ app_url }}"
+
+  tasks:
+    - name: install packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop: "{{ packages }}"
+
+    - name: copy environment template file
+      copy:
+        src: ../packer/app/.environment
+        dest: /tmp/.environment
+        owner: ubuntu
+
+    - name: copy nginx.conf template file
+      copy:
+        src: ../packer/app/app.conf
+        dest: /tmp/app.conf
+
+    - name: create environment file for services from template
+      shell: envsubst < /tmp/.environment > /home/ubuntu/.environment
+      become_user: ubuntu
+
+    - name: create app config file for nginx from template
+      shell: cat /tmp/app.conf | envsubst | sudo sh -c "exec cat > /etc/nginx/sites-available/app.conf"
+
+    - name: enable nginx server block configuration
+      file:
+        src: /etc/nginx/sites-available/app.conf
+        dest: /etc/nginx/sites-enabled/app.conf
+        state: link
+
+    - name: remove default nginx server block configuration
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: copy service files
+      copy:
+        src: "../packer/app/{{ item }}"
+        dest: /etc/systemd/system
+      with_items:
+        - app.service
+        - update.service
+
+    - name: copy user scripts for services
+      copy:
+        src: "../packer/app/{{ item }}"
+        dest: /home/ubuntu/
+        owner: ubuntu
+        mode: a+x
+      with_items:
+        - update.sh
+
+    - name: get app code from git
+      git:
+        repo: "{{ app_url }}"
+        dest: /home/ubuntu/app
+        version: alb
+      tags:
+        - git
+
+    - name: install python packages
+      pip:
+        requirements: /home/ubuntu/app/requirements.txt
+        virtualenv: /home/ubuntu/app/venv
+        virtualenv_command: /usr/bin/python3 -m venv
+
+    - name: enable nginx access gunicorn socket file
+      file:
+        path: /home/ubuntu/
+        mode: 0755
+
+    - name: enable services
+      systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+        daemon_reload: true
+      with_items:
+        - app
+        - update

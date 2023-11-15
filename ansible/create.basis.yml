@@ -1,0 +1,27 @@
+---
+- name: Prepare basis AMI
+  hosts: all
+  become: true
+  vars:
+    packages:
+      - unzip
+      - jq
+      - mc
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop: "{{ packages }}"
+    - name: Get AWS CLI
+      get_url:
+        url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        dest: /tmp/awscliv2.zip
+    - name: Extract AWS CLI
+      unarchive:
+        src: /tmp/awscliv2.zip
+        dest: /tmp/
+        remote_src: True
+    - name: Install AWS CLI
+      shell: /tmp/aws/install

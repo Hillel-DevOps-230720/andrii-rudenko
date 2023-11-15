@@ -20,13 +20,17 @@ build {
     }
   }
 
-  provisioner "shell" {
-    script          = "create.basis.sh"
-    execute_command = "{{ .Path }}"
+  provisioner "ansible" {
+    playbook_file   = "../ansible/create.basis.yml"
   }
 
-  post-processor "manifest" {
-    output = "manifest.json"
-  }
+  # provisioner "shell" {
+  #   script          = "create.basis.sh"
+  #   execute_command = "{{ .Path }}"
+  # }
+
+  # post-processor "manifest" {
+  #   output = "manifest.json"
+  # }
 
 }
