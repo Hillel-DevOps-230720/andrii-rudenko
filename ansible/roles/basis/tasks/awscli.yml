@@ -1,0 +1,17 @@
+---
+# tasks file for roles/basis
+
+- name: get latest aws cli
+  get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp/awscli.zip
+
+- name: extract aws cli
+  unarchive:
+    src: /tmp/awscli.zip
+    dest: /tmp/
+    remote_src: true
+
+- name: install aws cli
+  shell: /tmp/aws/install
+  become: true

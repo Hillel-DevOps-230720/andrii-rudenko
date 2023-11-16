@@ -1,0 +1,17 @@
+---
+- name: deploy app
+  hosts: app
+  vars:
+    env: "stage"
+
+  environment:
+    MYSQL_DB: "{{ db_name }}"
+    MYSQL_USER: "{{ db_user }}"
+    MYSQL_PASSWORD: "{{ db_password }}"
+    MYSQL_HOST: "{{ db_ip_local }}"
+    SECRET_KEY: "{{ app_key }}"
+    APP_PORT: "{{ app_port }}"
+    APP_URL: "{{ app_url }}"
+
+  roles:
+    - app

@@ -1,0 +1,13 @@
+---
+# tasks file for roles/basis
+
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ packages }}"
+  become: true
+
+- name: install awscli
+  include_tasks: awscli.yml

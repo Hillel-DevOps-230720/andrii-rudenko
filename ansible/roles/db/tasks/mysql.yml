@@ -1,0 +1,36 @@
+---
+# tasks file for roles/db
+
+- name: install mysql-python
+  pip:
+    name:
+      - pymysql
+    state: present
+  become: true
+
+- name: create database
+  community.mysql.mysql_db:
+    name: "{{ db_name }}"
+    state: present
+    login_user: root
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  become: true
+
+- name: add mysql user for database
+  community.mysql.mysql_user:
+    login_user: root
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    append_privs: yes
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    host: "%"
+    priv: "{{ db_name }}.*:ALL"
+    state: present
+  become: true
+
+- name: set mysql to listen on external ip
+  replace:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: 127.0.0.1
+    replace: 0.0.0.0
+  become: true

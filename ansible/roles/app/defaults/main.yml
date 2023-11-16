@@ -1,0 +1,19 @@
+---
+# defaults file for roles/app
+
+source_dir: ../packer/app
+
+# sudo_user: ubuntu
+# sudo_user_home: "/home/{{sudo_user}}"
+
+packages:
+  - nginx
+
+services:
+
+daemons:
+- app.service
+- update.service
+
+scripts:
+  - update.sh

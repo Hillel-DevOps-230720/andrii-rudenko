@@ -1,0 +1,18 @@
+---
+# defaults file for roles/db
+
+source_dir: ../packer/db
+
+packages:
+  - mariadb-server
+
+services:
+  - backup.service
+
+daemons:
+  - backup.timer
+  - update.service
+
+scripts:
+  - backup.sh
+  - update.sh

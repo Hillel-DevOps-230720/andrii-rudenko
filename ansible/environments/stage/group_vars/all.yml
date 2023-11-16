@@ -1,0 +1,5 @@
+env: stage
+
+db_name: flask
+db_user: flask
+db_password: flask

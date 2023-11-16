@@ -3,7 +3,7 @@ build {
   name = "db"
 
   source "sources.amazon-ebs.template" {
-    ami_name = "db"
+    ami_name = "database"
     source_ami_filter {
       owners      = ["self"]
       most_recent = true
@@ -21,7 +21,10 @@ build {
   }
 
   provisioner "ansible" {
-    playbook_file   = "../ansible/create.db.yml"
+    playbook_file    = "../ansible/create.db.yml"
+    ansible_env_vars = [
+      "ANSIBLE_ROLES_PATH=../ansible/roles"
+    ]
     extra_arguments = [
       "--extra-vars",
       join(" ", [
