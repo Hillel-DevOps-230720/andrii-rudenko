@@ -15,6 +15,7 @@ build {
     }
 
     tags = {
+      Name    = "app"
       project = "${var.project}"
       target  = "app"
     }
@@ -22,6 +23,9 @@ build {
 
   provisioner "ansible" {
     playbook_file   = "../ansible/create.app.yml"
+    ansible_env_vars = [
+      "ANSIBLE_ROLES_PATH=../ansible/roles"
+    ]
     extra_arguments = [
       "--extra-vars",
       join(" ", [

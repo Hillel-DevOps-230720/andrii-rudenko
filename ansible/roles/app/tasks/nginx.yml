@@ -1,0 +1,25 @@
+---
+# tasks file for roles/app
+
+- name: copy nginx.conf template file
+  copy:
+    src: "{{ source_dir }}/app.conf"
+    dest: /tmp/app.conf
+  become: true
+
+- name: create app config file for nginx from template
+  shell: cat /tmp/app.conf | envsubst | sudo sh -c "exec cat > /etc/nginx/sites-available/app.conf"
+  become: true
+
+- name: enable nginx server block configuration
+  file:
+    src: /etc/nginx/sites-available/app.conf
+    dest: /etc/nginx/sites-enabled/app.conf
+    state: link
+  become: true
+
+- name: remove default nginx server block configuration
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  become: true

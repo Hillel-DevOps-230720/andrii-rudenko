@@ -1,0 +1,41 @@
+---
+# tasks file for roles/db
+
+- name: install mysql and additional packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ packages }}"
+  become: true
+
+- name: create environment for services and scripts
+  include_tasks: env.yml
+
+- name: copy service files
+  copy:
+    src: "{{ source_dir }}/{{ item }}"
+    dest: /etc/systemd/system
+  with_items:
+    - "{{ services }}"
+    - "{{ daemons }}"
+  become: true
+
+- name: copy sripts
+  copy:
+    src: "{{ source_dir }}/{{ item }}"
+    dest: "/home/{{ ansible_user_id }}"
+    mode: a+x
+  loop: "{{ scripts }}"
+
+- name: create database & allow external ip
+  include_tasks: mysql.yml
+
+- name: enable backup timer & update service for aws parameter store
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+    daemon_reload: true
+  loop: "{{ daemons }}"
+  become: true

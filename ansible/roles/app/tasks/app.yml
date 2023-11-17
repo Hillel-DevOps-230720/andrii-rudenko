@@ -1,0 +1,18 @@
+# tasks file for roles/app
+
+- name: get app code from git
+  git:
+    repo: "{{ app_url }}"
+    dest: "/home/{{ ansible_user_id }}/app"
+    version: alb
+
+- name: install python packages
+  pip:
+    requirements: "/home/{{ ansible_user_id }}/app/requirements.txt"
+    virtualenv: "/home/{{ ansible_user_id }}/app/venv"
+    virtualenv_command: /usr/bin/python3 -m venv
+
+- name: enable nginx access gunicorn socket file
+  file:
+    path: "/home/{{ ansible_user_id }}"
+    mode: 0755

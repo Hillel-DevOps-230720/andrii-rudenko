@@ -1,0 +1,12 @@
+---
+# defaults file for roles/basis
+
+packages:
+  - unzip
+  - jq
+  - mc
+  - python3-pip
+  - python3.10-venv
+  - default-libmysqlclient-dev
+  - build-essential
+  - pkg-config

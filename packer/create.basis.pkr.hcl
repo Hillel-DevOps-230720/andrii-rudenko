@@ -15,13 +15,17 @@ build {
     }
 
     tags = {
+      Name    = "basis"
       project = "${var.project}"
       target  = "basis"
     }
   }
 
   provisioner "ansible" {
-    playbook_file   = "../ansible/create.basis.yml"
+    playbook_file    = "../ansible/create.basis.yml"
+    ansible_env_vars = [
+      "ANSIBLE_ROLES_PATH=../ansible/roles"
+    ]
   }
 
   # provisioner "shell" {

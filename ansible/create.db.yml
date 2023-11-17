@@ -13,14 +13,8 @@
 # update.service -> /etc/systemd/system/update.service
 
 ---
-- name: Prepare db AMI
+- name: prepare db ami
   hosts: all
-  become: true
-
-  vars:
-    packages:
-      - mariadb-server
-      - python3-pip
 
   environment:
     MYSQL_DB: "{{ db_name }}"
@@ -28,83 +22,5 @@
     MYSQL_PASSWORD: "{{ db_password }}"
     S3_NAME: "{{ s3_name }}"
 
-  tasks:
-    - name: install packages
-      ansible.builtin.apt:
-        name: "{{ item }}"
-        state: present
-        update_cache: true
-      loop: "{{ packages }}"
-
-    - name: copy environment template file
-      copy:
-        src: ../packer/db/.environment
-        dest: /tmp/.environment
-        owner: ubuntu
-
-    - name: create environment file for services from template
-      shell: envsubst < /tmp/.environment > /home/ubuntu/.environment
-      become_user: ubuntu
-
-    - name: copy service files
-      copy:
-        src: "../packer/db/{{ item }}"
-        dest: /etc/systemd/system
-      with_items:
-        - backup.timer
-        - backup.service
-        - update.service
-
-    - name: copy user scripts for services
-      copy:
-        src: "../packer/db/{{ item }}"
-        dest: /home/ubuntu/
-        owner: ubuntu
-        mode: a+x
-      with_items:
-        - backup.sh
-        - update.sh
-
-    - name: install mysql-python
-      ansible.builtin.pip:
-        name:
-          - pymysql
-        state: present
-
-    - name: create database
-      community.mysql.mysql_db:
-        name: "{{ db_name }}"
-        state: present
-        login_user: root
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-
-    - name: add mysql user for database
-      community.mysql.mysql_user:
-        login_user: root
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        append_privs: yes
-        name: "{{ db_user }}"
-        password: "{{ db_password }}"
-        host: "%"
-        priv: "{{ db_name }}.*:ALL"
-        state: present
-      tags:
-        - init_mysql
-
-    - name: set mysql to listen on external ip
-      replace:
-        path: /etc/mysql/mariadb.conf.d/50-server.cnf
-        regexp: 127.0.0.1
-        replace: 0.0.0.0
-
-    - name: enable backup timer
-      systemd:
-        name: backup.timer
-        enabled: yes
-        masked: no
-
-    - name: enable update service for aws parameter store
-      systemd:
-        name: update
-        enabled: yes
-        masked: no
+  roles:
+    - db
